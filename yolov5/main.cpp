@@ -94,7 +94,7 @@ int main(int argc, char** argv){
     int width, height, channels;
     unsigned char *img = stbi_load(img_path, &width, &height, &channels, 0);
     if (img == NULL) {
-        std::cout << "Error in loading the image" << std::endl;
+        std::cerr << "Error in loading the image" << std::endl;
         exit(1);
     }
     std::cout << "img: " << img_path << ", width = " << width << ", height = " << height << ", channels = " << channels << std::endl;
@@ -140,6 +140,7 @@ int main(int argc, char** argv){
         ptr[i] = output[i].data();
     post_process(ptr, img_path, img, &r_info);
 
+    cudaStreamDestroy(stream);
     for(int i=0;i<numInputs;i++)
         cudaFree(gpu_buffer[i]);
 
