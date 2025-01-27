@@ -9,4 +9,4 @@ CFLAGS += `pkg-config --libs cudart-${CUDA_VER}`
 CFLAGS += -lnvinfer
 
 main:main.cpp
-        ${CC} -o $@ main.cpp ${CFLAGS}
+	${CC} -o $@ main.cpp ${CFLAGS}
