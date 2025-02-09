@@ -31,7 +31,7 @@ int main(int argc, char** argv){
     //std::string engineFile = "yolov5s_v6.1_fp16_1b.engine";
     std::ifstream engineFileStream(engineFile, std::ios::binary);
     if (!engineFileStream.is_open()) {
-	    std::cerr << "Failed to open engine file!" << std::endl;
+	    std::cerr << "Failed to open engine file " << engineFile << "!" << std::endl;
 	    return -1;
     }
 
@@ -94,7 +94,7 @@ int main(int argc, char** argv){
     int width, height, channels;
     unsigned char *img = stbi_load(img_path, &width, &height, &channels, 0);
     if (img == NULL) {
-        std::cerr << "Error in loading the image" << std::endl;
+        std::cerr << "Error in loading image " << img_path << std::endl;
         exit(1);
     }
     std::cout << "img: " << img_path << ", width = " << width << ", height = " << height << ", channels = " << channels << std::endl;
